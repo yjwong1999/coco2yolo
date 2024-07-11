@@ -248,20 +248,22 @@ class Coco2Yolo(object):
                 y *= dh
                 h *= dh
 
-                polygons = anns[i]['segmentation']
+                polygon = anns[i]['segmentation'][0]
                 annotation_obb = f'{self.id_correspond_dict[anns[i]["category_id"]]}'
-                for polygon in polygons:
-                    # for every xy in polygon
-                    for i in range(0, len(polygon), 2):
-                        x = polygon[i]
-                        y = polygon[i + 1]
-                        
-                        x *= dw
-                        y *= dh
 
-                f.write(
-                    f'{self.id_correspond_dict[anns[i]["category_id"]]} {truncate(x, 7)} {truncate(y, 7)} {truncate(w, 7)} {truncate(h, 7)}\n'
-                )
+                # for every xy in polygon
+                for i in range(0, len(polygon), 2):
+                    x = polygon[i]
+                    y = polygon[i + 1]
+                    
+                    x *= dw
+                    y *= dh
+                    
+                    annotation_obb += f' {truncate(x, 7)} {truncate(y, 7)}'
+
+                annotation_obb += '\n'
+
+                f.write(annotation_obb)
 
 
 @click.command()
