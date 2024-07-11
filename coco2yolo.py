@@ -249,6 +249,13 @@ class Coco2Yolo(object):
                 y *= dh
                 h *= dh
 
+                polygons = anns[i]['segmentation']
+                for polygon in polygons:
+                    # for every xy in polygon
+                    for i in range(0, len(polygon), 2):
+                        x = polygon[i]
+                        y = polygon[i + 1]
+
                 f.write(
                     f'{self.id_correspond_dict[anns[i]["category_id"]]} {truncate(x, 7)} {truncate(y, 7)} {truncate(w, 7)} {truncate(h, 7)}\n'
                 )
