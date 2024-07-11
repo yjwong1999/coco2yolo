@@ -233,21 +233,6 @@ class Coco2Yolo(object):
         
         with open(f'{self.task_dir}/{".".join([*filename_struct_ls[:-1], "txt"])}', 'w') as f:
             for i in range(len(anns)):
-                xmin = anns[i]['bbox'][0]
-                ymin = anns[i]['bbox'][1]
-                xmax = anns[i]['bbox'][2] + anns[i]['bbox'][0]
-                ymax = anns[i]['bbox'][3] + anns[i]['bbox'][1]
-
-                x = (xmin + xmax) / 2
-                y = (ymin + ymax) / 2
-                w = xmax - xmin
-                h = ymax - ymin
-
-                x *= dw
-                w *= dw
-                y *= dh
-                h *= dh
-
                 polygon = anns[i]['segmentation'][0]
                 annotation_obb = f'{self.id_correspond_dict[anns[i]["category_id"]]}'
 
