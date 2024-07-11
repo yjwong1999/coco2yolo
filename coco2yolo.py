@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 
 '''
-    This code edit by YU-SHUN,
+    This code edit by YU-SHUN, enhanced by YJ-WONG
     Welcome to contact me if you have any questions.
-    e-mail: tw.yshuang@gmail.com
-    Github: https://github.com/tw-yshuang
+    e-mail: tw.yshuang@gmail.com, yjwong1999@gmail.com
 '''
 
 import os, sys, re, json, itertools 
